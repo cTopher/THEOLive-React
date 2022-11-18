@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import THEOLive from "./Player";
+import {Player} from "@theolive/player";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    async function handlePlayer(player: Player) {
+        await player.loadChannel("production")
+    }
+
+    return (
+        <>
+            <header className="container">
+                <h1>THEOLive example</h1>
+            </header>
+            <main className="container">
+                <THEOLive onPlayer={handlePlayer} />
+            </main>
+        </>
+    );
 }
 
 export default App;
